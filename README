@@ -1,0 +1,6 @@
+# Add node in DT (bcm2708_common.dtsi)
+# add aartyaa_lcd dir in sys and makefile
+# add aartyaa_lcd.h in include/linux/ in linux-4.4.8
+# probe of driver wil be called 
+# commemnted out creating syslink in core.c and base.c code
+# 

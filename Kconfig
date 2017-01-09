@@ -1,0 +1,13 @@
+# config file for configuring the 
+# aartyaa lcd driver with sysfs
+
+
+menu "aartyaa lcd driver with sysfs"
+
+config AARTYAA_LCD
+	tristate "aartyaa lcd"
+	default y
+	help
+	 aartyaa lcd driver with sysfs interface
+
+endmenu
