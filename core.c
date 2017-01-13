@@ -1085,7 +1085,7 @@ int i2c_device_add(struct device *dev)
 	if (error)
 		goto BusError;
 	
-#if 0
+#if 1 
 	error = dpm_sysfs_add(dev);
 	printk("i2c_device_add : dpm_sysfs_add = %d \n", error);
 	if (error)

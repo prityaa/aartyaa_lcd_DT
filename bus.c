@@ -514,20 +514,20 @@ int i2c_bus_add_device(struct device *dev)
 		printk("i2c_bus_add_device : device_add_groups error = %d\n", error);
 		if (error)
 			goto out_id;
-#if 0 
+#if 1 
 		error = sysfs_create_link(&bus->p->devices_kset->kobj,
 						&dev->kobj, dev_name(dev));
 		printk("i2c_bus_add_device : sysfs_create_link error = %d\n", error);
 		if (error)
 			goto out_groups;
 
+#endif
 		error = sysfs_create_link(&dev->kobj,
 				&dev->bus->p->subsys.kobj, "subsystem");
 		if (error)
 			goto out_subsys;
 		klist_add_tail(&dev->p->knode_bus, &bus->p->klist_devices);
 
-#endif
 	}
 
 	return 0;

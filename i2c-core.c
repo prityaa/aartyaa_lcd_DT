@@ -1541,6 +1541,7 @@ static int i2c_register_adapter(struct i2c_adapter *adap)
 {
 	int res = 0;
 
+	printk("i2c_register_adapter : aartyaa calling \n");	
 	/* Can't register until after driver model init */
 	if (unlikely(WARN_ON(!i2c_bus_type.p))) {
 		res = -EAGAIN;
@@ -1587,6 +1588,8 @@ static int i2c_register_adapter(struct i2c_adapter *adap)
 #endif
 
 	/* bus recovery specific initialization */
+	printk("i2c_register_adapter : adap->bus_recovery_info = %d\n", 
+		adap->bus_recovery_info);
 	if (adap->bus_recovery_info) {
 		struct i2c_bus_recovery_info *bri = adap->bus_recovery_info;
 
@@ -1651,6 +1654,7 @@ out_list:
 static int __i2c_add_numbered_adapter(struct i2c_adapter *adap)
 {
 	int	id;
+	printk("__i2c_add_numbered_adapter : aartyaa \n");
 
 	mutex_lock(&core_lock);
 	id = idr_alloc(&i2c_adapter_idr, adap, adap->nr, adap->nr + 1,
@@ -1658,6 +1662,7 @@ static int __i2c_add_numbered_adapter(struct i2c_adapter *adap)
 	mutex_unlock(&core_lock);
 	if (id < 0)
 		return id == -ENOSPC ? -EBUSY : id;
+	
 
 	return i2c_register_adapter(adap);
 }
@@ -1729,6 +1734,7 @@ int i2c_add_numbered_adapter(struct i2c_adapter *adap)
 {
 	if (adap->nr == -1) /* -1 means dynamically assign bus id */
 		return i2c_add_adapter(adap);
+	printk("i2c_add_numbered_adapter : aartyaa\n");	
 
 	return __i2c_add_numbered_adapter(adap);
 }
